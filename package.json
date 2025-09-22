@@ -1,0 +1,22 @@
+{
+  "name": "react-practice",
+  "version": "1.0.0",
+  "description": "This is React Practice by Nagababu Kantamaneni",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nagababo/React-Practice.git"
+  },
+  "keywords": [],
+  "author": "Nagababu Kantamaneni",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nagababo/React-Practice/issues"
+  },
+  "homepage": "https://github.com/nagababo/React-Practice#readme",
+  "devDependencies": {
+    "parcel": "^2.16.0"
+  }
+}
