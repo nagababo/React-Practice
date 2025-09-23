@@ -2,6 +2,7 @@
   "name": "react-practice",
   "version": "1.0.0",
   "description": "This is React Practice by Nagababu Kantamaneni",
+ 
   "scripts": {
     "test": "jest"
   },
@@ -18,5 +19,9 @@
   "homepage": "https://github.com/nagababo/React-Practice#readme",
   "devDependencies": {
     "parcel": "^2.16.0"
+  },
+  "dependencies": {
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1"
   }
 }
