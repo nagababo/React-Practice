@@ -1,16 +1,23 @@
+import React from "react";
+import ReactDOM from "react-dom/client";
 
+//React Element
+const Title = ()=>(
+  <h1 className="head" tabIndex="1">
+    Nameste React
+  </h1>
+);
+//React Component
+//  const HeadingComponent = ()=>{
+//      return <h1>i am from HeadingComponent</h1>
+//  }
 
+const HeadingComponent = () => (
+  <div id="container">
+    <Title/>
+    <h1 id="heading">I am from functional Heading Component</h1>
+  </div>
+);
 
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-
-const heading = (<h1 className='head'
-     tabIndex="1">Nameste React</h1>
-)
- 
-
-
-const root = ReactDOM.createRoot(document.getElementById("root"))
-root.render(heading)
-
-
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<HeadingComponent/>);
