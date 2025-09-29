@@ -1,22 +1,31 @@
 import { useEffect, useState } from "react";
 import RestaurantCard from "./RestaurantCard";
 import restaurants from "../utils/mockData";
-import Shammer from "./Shammer"
+import Shammer from "./Shammer";
 
 const Body = () => {
   const [listOfRestaurant, setListOfRestaurant] = useState([]);
+  const [filteredRestaurants, setFilteredRestaurants] = useState([]);
+  const [searchInput, setSearchInput] = useState('')
+
+  const handleSearch = ()=>{
+    const res = listOfRestaurant.filter((res)=>res.info.name.toLowerCase().includes(searchInput.toLowerCase()))
+    setFilteredRestaurants(res)
+
+  }
 
   const handleFilter = () => {
     const filteredRestaurants = restaurants.filter(
       (res) => res.info.avgRating > 4.2
     );
-    setListOfRestaurant(filteredRestaurants);
+    setFilteredRestaurants(filteredRestaurants);
+
   };
 
   useEffect(() => {
     setTimeout(() => {
       getData();
-    }, 5000);
+    }, 0);
   }, []);
 
   const getData = async () => {
@@ -32,6 +41,9 @@ const Body = () => {
     setListOfRestaurant(
       json.data.cards[1].card.card.gridElements.infoWithStyle.restaurants
     );
+        setFilteredRestaurants(json.data.cards[1].card.card.gridElements.infoWithStyle.restaurants
+)
+
 
     // → Array of all restaurant objects
 
@@ -42,19 +54,27 @@ const Body = () => {
     <>
       {listOfRestaurant.length === 0 ? (
         <>
-          <Shammer />
-          
+          <Shammer/>
         </>
       ) : (
         <div className="body">
-          <div className="search">Search</div>
-          <div className="filter">
-            <button className="filter-btn" onClick={handleFilter}>
-              Top Rated Restaurant
-            </button>
+          <div className="searchContainer">
+            <div className="filter">
+              <input type="text" placeholder="Enter name" value={searchInput} onChange={(e)=>{setSearchInput(e.target.value)}} />
+            </div>
+            <div className="filter">
+              <button onClick={handleSearch} >
+                Search
+              </button>
+            </div>
+            <div className="filter"> 
+              <button className="filter-btn" onClick={handleFilter}>
+                Top Rated Restaurant
+              </button>
+            </div>
           </div>
           <div className="res-container">
-            {listOfRestaurant.map((restaurant) => (
+            {filteredRestaurants.map((restaurant) => (
               <RestaurantCard
                 key={restaurant.info.id}
                 resData={restaurant?.info}
