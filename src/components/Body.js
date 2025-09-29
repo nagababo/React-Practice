@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import RestaurantCard from "./RestaurantCard";
 import restaurants from "../utils/mockData";
-import Shammer from "./Shammer";
+import Shimmer from "./Shimmer";
 
 const Body = () => {
   const [listOfRestaurant, setListOfRestaurant] = useState([]);
@@ -54,7 +54,7 @@ const Body = () => {
     <>
       {listOfRestaurant.length === 0 ? (
         <>
-          <Shammer/>
+          <Shimmer/>
         </>
       ) : (
         <div className="body">
