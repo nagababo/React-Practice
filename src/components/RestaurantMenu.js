@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import {Shimmer} from "./Shimmer"
 const RestaurantMenu = () => {
 
     const [resInfo, setResInfo]= useState(null)
@@ -21,9 +20,7 @@ const RestaurantMenu = () => {
 
     }
 
-    return resInfo === null  ? (
-        <Shimmer/>
-    ) : (
+    return  (
         <>
             <div className="menu">
                 <h1>{resInfo?.cards[0].card?.card.info?.name}</h1>
