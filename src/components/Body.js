@@ -3,12 +3,14 @@ import RestaurantCard from "./RestaurantCard";
 import restaurants from "../utils/mockData";
 import Shimmer from "./Shimmer";
 import { RES_URL } from "../utils/constants";
+import {Link} from "react-router"
 
 
 const Body = () => {
   const [listOfRestaurant, setListOfRestaurant] = useState([]);
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
   const [searchInput, setSearchInput] = useState("");
+  
 
   const handleSearch = () => {
     const res = listOfRestaurant.filter((res) =>
@@ -71,10 +73,11 @@ const Body = () => {
           </div>
           <div className="res-container">
             {filteredRestaurants.map((restaurant) => (
-              <RestaurantCard
-                key={restaurant.info.id}
+             <Link  key={restaurant.info.id} to={"./restaurants/"+restaurant.info.id}> <RestaurantCard
+                
                 resData={restaurant?.info}
               />
+              </Link>
             ))}
           </div>
         </div>
