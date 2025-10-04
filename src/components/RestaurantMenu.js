@@ -1,35 +1,28 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { RES_DET_URL } from "../utils/constants";
+import useRestaurantMenu from "../utils/useRestaurantMenu";
+import Shimmer from "./Shimmer"
 
 const RestaurantMenu = () => {
-  const [resInfo, setResInfo] = useState(null);
-  const {resId }= useParams();
+  const { resId } = useParams();
+  const resInfo = useRestaurantMenu(resId)
 
-  console.log(resId, "resId");
-  //const {name}= resInfo?.cards[0].card?.card.info?.name
+  if (resInfo === null) return <Shimmer />
 
-  useEffect(() => {
-    fetchMenu();
-  }, []);
+  console.log(resInfo,"resInfo")
 
-  const fetchMenu = async () => {
-    const data = await fetch(RES_DET_URL + resId );
-
-    const json = await data.json();
-    console.log(json, "");
-    setResInfo(json.data.cards[2].card.card.info);
-  };
+  const { name, cuisines, costForTwoMessage } = resInfo.cards[2].card.card.info;
+ // const { itemCards } = resInfo?.cards[2]?.groupedCard?.cardGroup?.REGULAR?.cards[1]?.card?.card;
 
   return (
     <>
       <div className="menu">
-        <h1>{resInfo?.name}</h1>
+        <h1>{name}</h1>
+        <p>{cuisines.join(", ")} - {costForTwoMessage}</p>
         <h2>Menu</h2>
         <ul>
-          <li>Birayani</li>
-          <li>Burgers</li>
-          <li>Diet Coke</li>
+          <li></li>
         </ul>
       </div>
     </>
