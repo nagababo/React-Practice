@@ -30,7 +30,7 @@ const Header = () => {
             <Link to="./contact">Contact Us</Link>
           </li>
           <li>
-            <Link to="./cart">Cart</Link>
+            <Link to="./grocery">Grocery</Link>
           </li>
           <li><button className="" onClick={() => {
             setBtnText(btnText === "Log In" ? "Log Out" : "Log In")
