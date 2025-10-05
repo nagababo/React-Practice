@@ -52,36 +52,40 @@ const Body = () => {
           <Shimmer />
         </>
       ) : (
-        <div className="body">
-          <div className="searchContainer">
-            <div className="filter">
-              <input
-                type="text"
-                placeholder="Enter name"
-                value={searchInput}
-                onChange={(e) => {
-                  setSearchInput(e.target.value);
-                }}
-              />
+        <div>
+            <div className="flex">
+              <div className="m-4">
+                <input
+                  type="text"
+                  className="border border-solid border-black"
+                  placeholder="Enter name"
+                  value={searchInput}
+                  onChange={(e) => {
+                    setSearchInput(e.target.value);
+                  }}
+                />
+              </div>
+              <div className="m-4">
+                <button className=" bg-green-100 rounded-lg" onClick={handleSearch}>Search</button>
+              </div>
+              <div className="m-4">
+                <button className="bg-blue-100 rounded-lg" onClick={handleFilter}>
+                  Top Rated Restaurant
+                </button>
+              </div>
             </div>
-            <div className="filter">
-              <button onClick={handleSearch}>Search</button>
+
+
+
+            <div className=" flex flex-wrap">
+              {filteredRestaurants.map((restaurant) => (
+              <Link  key={restaurant.info.id} to={"./restaurants/"+restaurant.info.id}> <RestaurantCard
+                  
+                  resData={restaurant?.info}
+                />
+                </Link>
+              ))}
             </div>
-            <div className="filter">
-              <button className="filter-btn" onClick={handleFilter}>
-                Top Rated Restaurant
-              </button>
-            </div>
-          </div>
-          <div className="res-container">
-            {filteredRestaurants.map((restaurant) => (
-             <Link  key={restaurant.info.id} to={"./restaurants/"+restaurant.info.id}> <RestaurantCard
-                
-                resData={restaurant?.info}
-              />
-              </Link>
-            ))}
-          </div>
         </div>
       )}
     </>
