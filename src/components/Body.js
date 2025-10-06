@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import RestaurantCard from "./RestaurantCard";
+import RestaurantCard , {withTopRatedLabel}from "./RestaurantCard";
 import restaurants from "../utils/mockData";
 import Shimmer from "./Shimmer";
 import { RES_URL } from "../utils/constants";
@@ -12,7 +12,9 @@ const Body = () => {
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
   const [searchInput, setSearchInput] = useState("");
   const onlineStatus = useOnlineStatus()
+  const RestaurantCardWithLabel = withTopRatedLabel(RestaurantCard)
   
+  console.log(listOfRestaurant,"listOfRestaurant")
   const handleSearch = () => {
     const res = listOfRestaurant.filter((res) =>
       res.info.name.toLowerCase().includes(searchInput.toLowerCase())
@@ -79,10 +81,13 @@ const Body = () => {
 
             <div className=" flex flex-wrap">
               {filteredRestaurants.map((restaurant) => (
-              <Link  key={restaurant.info.id} to={"./restaurants/"+restaurant.info.id}> <RestaurantCard
+              <Link  key={restaurant.info.id} to={"./restaurants/"+restaurant.info.id}> 
+
+              {restaurant.info.avgRating > 4.1 ? (<RestaurantCardWithLabel resData={restaurant?.info} /> ):  ( <RestaurantCard
                   
                   resData={restaurant?.info}
-                />
+                />) }
+             
                 </Link>
               ))}
             </div>
