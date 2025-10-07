@@ -1,4 +1,6 @@
 import React  from "react";
+import UserContext from "../utils/userContext"
+
 class UserClass extends React.Component{
     constructor(props){
         super(props)
@@ -13,6 +15,7 @@ class UserClass extends React.Component{
        return (
         <div className="user-card">
             <h1>Count: {count}</h1>
+
             <button onClick={()=>{
 
                 // Never update state vaiable directly
@@ -23,6 +26,10 @@ class UserClass extends React.Component{
             <h2>Name:{name}</h2>
             <h3>Location:{location}</h3>
             <h4>Contact: Nagababuk@hotmail.com</h4>
+           <UserContext.Consumer>
+            {({loggedInUser})=><h1 className="font-bold">user:{loggedInUser}</h1>}
+           </UserContext.Consumer>
+            
         </div>
     )
     }

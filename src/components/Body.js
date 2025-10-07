@@ -1,10 +1,11 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import RestaurantCard , {withTopRatedLabel}from "./RestaurantCard";
 import restaurants from "../utils/mockData";
 import Shimmer from "./Shimmer";
 import { RES_URL } from "../utils/constants";
 import {Link} from "react-router"
 import useOnlineStatus from "../utils/useOnlineStatus";
+import UserContext from "../utils/userContext";
 
 
 const Body = () => {
@@ -13,6 +14,8 @@ const Body = () => {
   const [searchInput, setSearchInput] = useState("");
   const onlineStatus = useOnlineStatus()
   const RestaurantCardWithLabel = withTopRatedLabel(RestaurantCard)
+
+  const {loggedInUser,setUserName}= useContext(UserContext)
   
   console.log(listOfRestaurant,"listOfRestaurant")
   const handleSearch = () => {
@@ -74,6 +77,10 @@ const Body = () => {
                 <button className="bg-blue-100 rounded-lg" onClick={handleFilter}>
                   Top Rated Restaurant
                 </button>
+              </div>
+
+               <div className="m-4">
+                  <input type="text" value={loggedInUser} placeholder="enter text" onChange={(e)=> setUserName(e.target.value)}/>
               </div>
             </div>
 
