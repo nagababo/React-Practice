@@ -34,3 +34,12 @@ React Practice 🚀🚀
 /* There are two type of export and import
         export default component name or 
         import 
+
+
+        #Redux tool kit
+        Install @reduxjs/toolkit and react-redux
+        Build out store
+        connect our store to our app
+        slice
+        dispactch(action)
+        selector
