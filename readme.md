@@ -55,3 +55,11 @@ React Practice 🚀🚀
           Install Babel dependencies (from jest site)
           Configure Babel 
           configure Parcel config file to disable default babel transpilation
+          jest configuration  (npx jest -- init) (but depracated)
+          install jsDOM Library
+
+          install @babel/preset-react - to make jsx work in test cases. (npm i -D @babel/preset-react)
+          install npm i -D @testing-library/jest-dom
+
+
+
