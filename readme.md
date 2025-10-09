@@ -43,3 +43,15 @@ React Practice 🚀🚀
         slice
         dispactch(action)
         selector
+
+        Developer Testing
+          Unit Testing
+          Integration Testing
+          End to End Testing - e 2e testing
+
+          /* Setting up React Testing Library
+          Install React Testing Library
+          Install Jest
+          Install Babel dependencies (from jest site)
+          Configure Babel 
+          configure Parcel config file to disable default babel transpilation
