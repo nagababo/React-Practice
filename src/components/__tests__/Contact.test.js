@@ -7,7 +7,17 @@ render(<Contact />);
 
     const heading = screen.getByRole("heading");
     //Assertion
-    expect(heading).toBeInTheDocument();
+    expect(heading).toBeInTheDocument(heading);
+    
+
+})
+
+test("Should load button component",()=>{
+render(<Contact />);
+
+    const button = screen.getByRole("button")
+    //Assertion
+    expect(button).toBeInTheDocument(button);
     
 
 })
