@@ -7,7 +7,7 @@ render(<Contact />);
 
     const heading = screen.getByRole("heading");
     //Assertion
-    expect(heading).toBeInTheDocument(heading);
+    expect(heading).toBeInTheDocument();
     
 
 })
@@ -17,7 +17,7 @@ render(<Contact />);
 
     const button = screen.getByRole("button")
     //Assertion
-    expect(button).toBeInTheDocument(button);
+    expect(button).toBeInTheDocument();
     
 
 })
